@@ -10,9 +10,12 @@
 class Game
 {
 public:
+	//Konstruktor
 	Game();
 
 	void run();
+
+	//getter und setter
 	bool isRunning();
 	void setRunning(bool running);
 	

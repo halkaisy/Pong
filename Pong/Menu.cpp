@@ -2,6 +2,7 @@
 
 Menu::Menu()
 {
+	//Menupunkte initialisieren.
 	font.loadFromFile("font.ttf");
 	textStart.setFont(font);
 	textStart.setString("Start Game");
@@ -22,6 +23,7 @@ Menu::~Menu()
 
 void Menu::eventHandler(Game& game)
 {
+	//Fenster bleibt solange offen, bis der Benutzer es schliesst.
 	sf::Event event;
 	while (game.window.pollEvent(event)) {
 		if (event.type == sf::Event::Closed) {
