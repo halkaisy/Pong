@@ -10,6 +10,11 @@ void Game::run()
 	// run the program as long as the window is open
 	while (window.isOpen())
 	{
+		//zeit messen
+		time2 = clock.getElapsedTime();
+		timeDifference = time2 - timeStart;
+		timeStart = time2;
+
 		currentState->eventHandler(*this);
 
 		window.clear(sf::Color::Black);

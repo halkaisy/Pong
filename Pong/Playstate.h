@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "Gamestate.h"
+#include "Paddle.h"
 
 class Playstate :
 	public Gamestate
@@ -17,8 +18,8 @@ public:
 
 private:
 	std::unique_ptr<sf::CircleShape> ball;
-	std::shared_ptr<sf::RectangleShape> paddle1;
-	std::shared_ptr<sf::RectangleShape> paddle2;
+	std::shared_ptr<Paddle> paddle1;
+	std::shared_ptr<Paddle> paddle2;
 };
 
 #endif

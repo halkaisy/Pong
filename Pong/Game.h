@@ -23,7 +23,11 @@ public:
 	bool isRunning();
 	void setRunning(bool running);
 	
-	sf::RenderWindow window; 
+	sf::RenderWindow window;
+	sf::Clock clock;
+	sf::Time timeStart = clock.getElapsedTime();
+	sf::Time time2;
+	sf::Time timeDifference;
 private:
 	bool running;
 	std::unique_ptr<Gamestate> currentState;
