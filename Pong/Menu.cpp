@@ -30,6 +30,22 @@ void Menu::eventHandler(Game& game)
 			game.window.close();
 			game.setRunning(false);
 		}
+
+		if (event.type == sf::Event::MouseButtonReleased)
+		{
+			if (event.mouseButton.button == 0)
+			{
+				if (startSelected)
+				{
+					game.changeState(Game::states::PLAY);
+				}
+				else if (endSelected)
+				{
+					game.window.close();
+					game.setRunning(false);
+				}
+			}
+		}
 	}
 }
 

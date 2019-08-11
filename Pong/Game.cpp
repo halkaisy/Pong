@@ -3,9 +3,6 @@
 Game::Game():window(sf::VideoMode(1280, 720), "Pong")
 {
 	running = true;
-
-	//Unique Pointer auf Menu
-	currentState = std::move(std::unique_ptr<Menu>(new Menu));
 }
 
 void Game::run()
@@ -19,6 +16,21 @@ void Game::run()
 		currentState->update(*this);
 		currentState->draw(*this);
 		window.display();
+	}
+}
+
+void Game::changeState(states newstate)
+{
+	switch (newstate)
+	{
+	case states::MENU:
+		currentState = std::move(std::unique_ptr<Menu>(new Menu));
+		break;
+	case states::PLAY:
+		currentState = std::move(std::unique_ptr<Playstate>(new Playstate));
+		break;
+	default:
+		break;
 	}
 }
 
