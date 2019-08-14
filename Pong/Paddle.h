@@ -19,6 +19,8 @@ private:
 	sf::Keyboard::Key down;
 	sf::Vector2f startPosition;
 	sf::Time elapsedTime;
+
+	float speed;
 };
 
 #endif

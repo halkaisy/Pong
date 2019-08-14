@@ -10,6 +10,8 @@ Paddle::Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position)
 	setPosition(position);
 
 	startPosition = position;
+
+	speed = 1000.f;
 }
 
 
@@ -19,11 +21,11 @@ void Paddle::update(sf::RenderWindow& window, sf::Time elapsed)
 
 	if (sf::Keyboard::isKeyPressed(up) && getPosition().y > getGlobalBounds().height / 2)
 	{
-		move(sf::Vector2f(0.f, -1000.f * elapsed.asSeconds()));
+		move(sf::Vector2f(0.f, -speed * elapsed.asSeconds()));
 	}
 	else if (sf::Keyboard::isKeyPressed(down) && getPosition().y < window.getSize().y - getGlobalBounds().height / 2)
 	{
-			move(sf::Vector2f(0.f, 1000.f * elapsed.asSeconds()));
+			move(sf::Vector2f(0.f, speed * elapsed.asSeconds()));
 	};
 }
 
