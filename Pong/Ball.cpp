@@ -19,15 +19,25 @@ Ball::Ball(float radius, sf::Color color,sf::Vector2f position, std::shared_ptr<
 void Ball::initialize()
 {
 	speed = 300.f;
-	direcition = rand() % 2;
+	direcition = rand() % 4;
 
-	if (direcition == 0)
+	//Ball bekommt eine zufaellige startrichtung
+	switch (Ball::direcition)
 	{
-		movement = sf::Vector2f(speed, 0.f);
-	}
-	else 
-	{
-		movement = sf::Vector2f(-speed, 0.f);
+	case 0:
+		movement = sf::Vector2f(speed, speed);
+		break;
+	case 1:
+		movement = sf::Vector2f(speed, -speed);
+		break;
+	case 2:
+		movement = sf::Vector2f(-speed, speed);
+		break;
+	case 3:
+		movement = sf::Vector2f(-speed, -speed);
+		break;
+	default:
+		break;
 	}
 
 	setPosition(640.f, 360.f);
@@ -52,7 +62,8 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 		getGlobalBounds().top + getGlobalBounds().height >= pPaddle1->getPosition().y - pPaddle1->getSize().y /2 &&
 		getGlobalBounds().top <= pPaddle1->getPosition().y + pPaddle1->getSize().y / 2) 
 	{
-		
+		movement.x = speed;
+		/*
 		//Ball kollidiert oben, unten oder mittig mit paddle?
 		if (getPosition().y < pPaddle1->getPosition().y)
 		{
@@ -67,31 +78,33 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 		else
 		{
 			movement.x = speed;
-		}
+		}*/
 	}
 	//Kollisiion Paddle2
 	else if (getGlobalBounds().left < pPaddle2->getPosition().x + (pPaddle2->getSize().x / 2) && //Kollisiion Paddle2
 			getGlobalBounds().left + getGlobalBounds().width > pPaddle2->getPosition().x - (pPaddle2->getSize().x / 2) &&
 			getGlobalBounds().top + getGlobalBounds().height >= pPaddle2->getPosition().y - pPaddle2->getSize().y / 2 &&
 			getGlobalBounds().top <= pPaddle2->getPosition().y + pPaddle2->getSize().y / 2)
-		{
-		
-			//Ball kollidiert oben, unten oder mittig mit paddle?
-			if (getPosition().y < pPaddle2->getPosition().y)
-			{
-				movement.x = -speed;
-				movement.y = speed;
-			}
-			else if (getPosition().y > pPaddle2->getPosition().y)
-			{
-				movement.x = -speed;
-				movement.y = -speed;
-			}
-			else
-			{
-				movement.x = -speed;
-			}
-		}
+	{
+			
+		movement.x = -speed;
+		 /*
+		 //Ball kollidiert oben, unten oder mittig mit paddle?
+		 if (getPosition().y < pPaddle2->getPosition().y)
+		 {
+		 	 movement.x = -speed;
+			 movement.y = speed;
+		 }
+		 else if (getPosition().y > pPaddle2->getPosition().y)
+		 {
+			 movement.x = -speed;
+			 movement.y = -speed;
+		 }
+		 else
+		 {
+			movement.x = -speed;
+		 }*/
+	}
 
 	move(movement.x * elapsed.asSeconds(), movement.y * elapsed.asSeconds());
 }
