@@ -7,7 +7,7 @@
 class Paddle : public sf::RectangleShape
 {
 public:
-	Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position);
+	Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position, std::string texturePath);
 	
 	void update(sf::RenderWindow& window, sf::Time elapsed);
 	void initialize();
@@ -19,6 +19,8 @@ private:
 	sf::Keyboard::Key down;
 	sf::Vector2f startPosition;
 	sf::Time elapsedTime;
+
+	sf::Texture texture;
 
 	float speed;
 };

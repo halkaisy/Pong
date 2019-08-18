@@ -2,14 +2,18 @@
 
 
 
-Paddle::Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position)
+Paddle::Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position, std::string texturePath)
 {
 	setSize(size);
-	setFillColor(color);
+	//setFillColor(color);
 	setOrigin(getSize().x / 2, getSize().y /2);
 	setPosition(position);
 
 	startPosition = position;
+
+	texture.loadFromFile(texturePath);
+	texture.setSmooth(true);
+	setTexture(&texture);
 
 	speed = 1000.f;
 }

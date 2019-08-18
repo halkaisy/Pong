@@ -4,8 +4,8 @@
 
 Playstate::Playstate()
 {
-	paddle1 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Blue, sf::Vector2f(32.f, 320.f));
-	paddle2 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Red, sf::Vector2f(1248.f, 320.f));
+	paddle1 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Blue, sf::Vector2f(32.f, 320.f), "redPaddle.jpg");
+	paddle2 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Red, sf::Vector2f(1248.f, 320.f), "bluePaddle.jpg");
 	ball = std::unique_ptr<Ball>(new Ball(20.f, sf::Color::Yellow, sf::Vector2f(640.f, 360.f), paddle1, paddle2));
 
 
@@ -22,11 +22,13 @@ Playstate::Playstate()
 	pointsLeftText.setCharacterSize(50);
 	pointsLeftText.setString("0");
 	pointsLeftText.setPosition(480.f, 10.f);
+	pointsLeftText.setFillColor(sf::Color::Yellow);
 
 	pointsRightText.setFont(font);
 	pointsRightText.setCharacterSize(50);
 	pointsRightText.setString("0");
 	pointsRightText.setPosition(800.f, 10.f);
+	pointsRightText.setFillColor(sf::Color::Yellow);
 
 	paddle1->setKeyUp(sf::Keyboard::W);
 	paddle1->setKeyDown(sf::Keyboard::S);
