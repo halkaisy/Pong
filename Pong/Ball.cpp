@@ -25,8 +25,7 @@ Ball::Ball(float radius, sf::Color color,sf::Vector2f position, std::shared_ptr<
 	bufferPaddle.loadFromFile("pongWall.wav");
 	soundPaddle.setBuffer(bufferPaddle);
 	
-	bufferPoint.loadFromFile("point.wav");
-	soundPoint.setBuffer(bufferPoint);
+	
 }
 
 void Ball::initialize()
@@ -125,18 +124,4 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 	}
 
 	move(movement.x * elapsed.asSeconds(), movement.y * elapsed.asSeconds());
-
-
-	//Auf Kollision mit Bildschirmrand links und rechts pruefen
-
-	if (getPosition().x <= 0)
-	{
-		soundPoint.play();
-		movement.x = speed;
-	}
-	else if (getPosition().x >= window.getSize().x)
-	{
-		soundPoint.play();
-		movement.x = -speed;
-	}
 }

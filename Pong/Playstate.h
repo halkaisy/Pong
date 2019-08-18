@@ -29,6 +29,9 @@ private:
 	sf::Text pointsLeftText;
 	sf::Text pointsRightText;
 
+	sf::SoundBuffer bufferPoint;
+	sf::Sound soundPoint;
+
 	int pointsLeft;
 	int pointsRight;
 };

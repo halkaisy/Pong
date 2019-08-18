@@ -23,10 +23,7 @@ private:
 	sf::Sound soundWall;
 	sf::SoundBuffer bufferPaddle;
 	sf::Sound soundPaddle;
-	sf::SoundBuffer bufferPoint;
-	sf::Sound soundPoint;
-
-
+	
 	std::shared_ptr<Paddle> pPaddle1;
 	std::shared_ptr<Paddle> pPaddle2;
 };
