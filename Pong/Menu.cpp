@@ -7,17 +7,26 @@ Menu::Menu()
 	textStart.setFont(font);
 	textStart.setString("Start Game");
 	textStart.setCharacterSize(32);
-	textStart.setPosition(500.f, 400.f);
+	textStart.setPosition(500.f, 200.f);
 
 	font.loadFromFile("font.ttf");
 	textEnd.setFont(font);
 	textEnd.setString("End");
 	textEnd.setCharacterSize(32);
-	textEnd.setPosition(500.f, 450.f);
+	textEnd.setPosition(500.f, 250.f);
 
 	texture.loadFromFile("background.png");
 	texture.setSmooth(true);
 	sprite.setTexture(texture);
+
+	font.loadFromFile("font.ttf");
+	description.setFont(font);
+	description.setString("CONTROLS\n\n"
+	"Player1 w  s \n"
+	"Player2 up  down \n"
+	"Press Space to start the ball");
+	description.setCharacterSize(16);
+	description.setPosition(500.f, 400.f);
 }
 
 Menu::~Menu()
@@ -103,6 +112,7 @@ void Menu::draw(Game& game)
 {
 	game.window.draw(sprite);
 	game.window.draw(textStart);
+	game.window.draw(description);
 	game.window.draw(textEnd);
 }
 
