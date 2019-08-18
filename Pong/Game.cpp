@@ -39,6 +39,13 @@ void Game::changeState(states newstate)
 	}
 }
 
+std::string Game::intToString(int num)
+{
+	std::ostringstream stringstream;
+	stringstream << num;
+	return stringstream.str();
+}
+
 
 bool Game::isRunning()
 {

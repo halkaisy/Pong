@@ -4,7 +4,7 @@
 Ball::Ball(float radius, sf::Color color,sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2)
 {
 	setRadius(radius);
-	setFillColor(color);
+	//setFillColor(color);
 	setOrigin(getRadius() / 2, getRadius() / 2);
 	setPosition(position);
 
@@ -14,6 +14,16 @@ Ball::Ball(float radius, sf::Color color,sf::Vector2f position, std::shared_ptr<
 	direcition = 1;
 	speed = 0.f;
 	movement = sf::Vector2f(0.f, 0.f);
+
+	textur.loadFromFile("ball.png");
+	textur.setSmooth(true);
+	setTexture(&textur);
+
+
+	bufferWall.loadFromFile("pongPaddle.wav");
+	soundWall.setBuffer(bufferWall);
+	bufferPaddle.loadFromFile("pongWall.wav");
+	soundPaddle.setBuffer(bufferPaddle);
 }
 
 void Ball::initialize()
@@ -49,10 +59,12 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 
 	if (getPosition().y <= 0)
 	{
+		soundWall.play();
 		movement.y = speed;
 	}
 	else if (getPosition().y >= window.getSize().y)
 	{
+		soundWall.play();
 		movement.y = -speed;
 	}
 
@@ -62,6 +74,7 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 		getGlobalBounds().top + getGlobalBounds().height >= pPaddle1->getPosition().y - pPaddle1->getSize().y /2 &&
 		getGlobalBounds().top <= pPaddle1->getPosition().y + pPaddle1->getSize().y / 2) 
 	{
+		soundPaddle.play();
 		movement.x = speed;
 		/*
 		//Ball kollidiert oben, unten oder mittig mit paddle?
@@ -87,6 +100,7 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 			getGlobalBounds().top <= pPaddle2->getPosition().y + pPaddle2->getSize().y / 2)
 	{
 			
+		soundPaddle.play();
 		movement.x = -speed;
 		 /*
 		 //Ball kollidiert oben, unten oder mittig mit paddle?

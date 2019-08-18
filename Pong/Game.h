@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "Playstate.h"
 #include <memory>
+#include <sstream>
 
 class Game
 {
@@ -18,6 +19,8 @@ public:
 	void run();
 	void changeState(states newstate);
 
+
+	std::string intToString(int num);
 
 	//getter und setter
 	bool isRunning();

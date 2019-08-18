@@ -21,6 +21,16 @@ private:
 	std::unique_ptr<Ball> ball;
 	std::shared_ptr<Paddle> paddle1;
 	std::shared_ptr<Paddle> paddle2;
+
+	sf::Texture bgTexture;
+	sf::Sprite bgSprite;
+
+	sf::Font font;
+	sf::Text pointsLeftText;
+	sf::Text pointsRightText;
+
+	int pointsLeft;
+	int pointsRight;
 };
 
 #endif
