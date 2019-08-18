@@ -14,6 +14,10 @@ Menu::Menu()
 	textEnd.setString("End");
 	textEnd.setCharacterSize(32);
 	textEnd.setPosition(500.f, 450.f);
+
+	texture.loadFromFile("background.png");
+	texture.setSmooth(true);
+	sprite.setTexture(texture);
 }
 
 Menu::~Menu()
@@ -97,6 +101,7 @@ void Menu::update(Game& game)
 
 void Menu::draw(Game& game)
 {
+	game.window.draw(sprite);
 	game.window.draw(textStart);
 	game.window.draw(textEnd);
 }

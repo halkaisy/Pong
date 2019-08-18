@@ -17,6 +17,8 @@ private:
 	sf::Font font;
 	sf::Text textStart;
 	sf::Text textEnd;
+	sf::Texture texture;
+	sf::Sprite sprite;
 };
 
 #endif
