@@ -16,7 +16,6 @@ void Game::run()
 		timeStart = time2;
 
 		currentState->eventHandler(*this);
-
 		window.clear(sf::Color::Black);
 		currentState->update(*this);
 		currentState->draw(*this);

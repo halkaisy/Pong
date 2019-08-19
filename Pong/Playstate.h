@@ -28,12 +28,17 @@ private:
 	sf::Font font;
 	sf::Text pointsLeftText;
 	sf::Text pointsRightText;
+	sf::Text timeTextSec;
+	sf::Text timeTextMin;
 
 	sf::SoundBuffer bufferPoint;
 	sf::Sound soundPoint;
 
 	int pointsLeft;
 	int pointsRight;
+
+	int counterMin;
+	int counterSec;
 };
 
 #endif

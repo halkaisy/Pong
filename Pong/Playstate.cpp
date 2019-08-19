@@ -7,8 +7,14 @@ Playstate::Playstate()
 	paddle1 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Blue, sf::Vector2f(32.f, 320.f), "redPaddle.jpg");
 	paddle2 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Red, sf::Vector2f(1248.f, 320.f), "bluePaddle.jpg");
 	ball = std::unique_ptr<Ball>(new Ball(20.f, sf::Color::Yellow, sf::Vector2f(640.f, 360.f), paddle1, paddle2));
-
-
+	for (int counterMin = 2; counterMin < 2 && counterMin > 0; counterMin--)
+	{
+	
+	for (int counterSec = 59; counterSec > 0; counterSec--)
+	{
+		
+	}
+	}
 	font.loadFromFile("font.ttf");
 
 	bgTexture.loadFromFile("background.jpg");
@@ -37,6 +43,18 @@ Playstate::Playstate()
 
 	bufferPoint.loadFromFile("point.wav");
 	soundPoint.setBuffer(bufferPoint);
+
+	timeTextSec.setFont(font);
+	timeTextSec.setCharacterSize(50);
+	timeTextSec.setString("0");
+	timeTextSec.setPosition(600.f, 10.f);
+	timeTextSec.setFillColor(sf::Color::Red);
+	
+	timeTextMin.setFont(font);
+	timeTextMin.setCharacterSize(50);
+	timeTextMin.setString("0");
+	timeTextMin.setPosition(700.f, 10.f);
+	timeTextMin.setFillColor(sf::Color::Red);
 
 }
 
@@ -99,6 +117,10 @@ void Playstate::update(Game & game)
 
 	pointsLeftText.setString(game.intToString(pointsLeft));
 	pointsRightText.setString(game.intToString(pointsRight));
+	timeTextMin.setString(game.intToString(counterSec));
+	timeTextSec.setString(game.intToString(counterMin));
+
+
 }
 
 void Playstate::draw(Game& game)
@@ -109,4 +131,7 @@ void Playstate::draw(Game& game)
 	game.window.draw(*paddle2);
 	game.window.draw(pointsLeftText);
 	game.window.draw(pointsRightText);
+	game.window.draw(timeTextMin);
+	game.window.draw(timeTextSec);
+	
 }
