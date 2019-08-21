@@ -1,7 +1,7 @@
 #include "Ball.h"
 
 
-Ball::Ball(float radius, sf::Color color,sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2)
+Ball::Ball(float radius, sf::Color color, sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2)
 {
 	setRadius(radius);
 	//setFillColor(color);
@@ -24,6 +24,8 @@ Ball::Ball(float radius, sf::Color color,sf::Vector2f position, std::shared_ptr<
 	soundWall.setBuffer(bufferWall);
 	bufferPaddle.loadFromFile("pongWall.wav");
 	soundPaddle.setBuffer(bufferPaddle);
+
+
 }
 
 void Ball::initialize()
@@ -53,7 +55,7 @@ void Ball::initialize()
 	setPosition(640.f, 360.f);
 }
 
-void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
+void Ball::update(sf::RenderWindow & window, sf::Time elapsed)
 {
 	//Auf Kollision mit Bildschirmrand oben und unten pruefen
 
@@ -68,11 +70,12 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 		movement.y = -speed;
 	}
 
+
 	//Kollision mit Paddle
-	if (getGlobalBounds().left < pPaddle1->getPosition().x + (pPaddle1->getSize().x /2) && 
-		getGlobalBounds().left + getGlobalBounds().width > pPaddle1->getPosition().x - (pPaddle1->getSize().x /2) &&
-		getGlobalBounds().top + getGlobalBounds().height >= pPaddle1->getPosition().y - pPaddle1->getSize().y /2 &&
-		getGlobalBounds().top <= pPaddle1->getPosition().y + pPaddle1->getSize().y / 2) 
+	if (getGlobalBounds().left < pPaddle1->getPosition().x + (pPaddle1->getSize().x / 2) &&
+		getGlobalBounds().left + getGlobalBounds().width > pPaddle1->getPosition().x - (pPaddle1->getSize().x / 2) &&
+		getGlobalBounds().top + getGlobalBounds().height >= pPaddle1->getPosition().y - pPaddle1->getSize().y / 2 &&
+		getGlobalBounds().top <= pPaddle1->getPosition().y + pPaddle1->getSize().y / 2)
 	{
 		soundPaddle.play();
 		movement.x = speed;
@@ -95,30 +98,33 @@ void Ball::update(sf::RenderWindow &window, sf::Time elapsed)
 	}
 	//Kollisiion Paddle2
 	else if (getGlobalBounds().left < pPaddle2->getPosition().x + (pPaddle2->getSize().x / 2) && //Kollisiion Paddle2
-			getGlobalBounds().left + getGlobalBounds().width > pPaddle2->getPosition().x - (pPaddle2->getSize().x / 2) &&
-			getGlobalBounds().top + getGlobalBounds().height >= pPaddle2->getPosition().y - pPaddle2->getSize().y / 2 &&
-			getGlobalBounds().top <= pPaddle2->getPosition().y + pPaddle2->getSize().y / 2)
+		getGlobalBounds().left + getGlobalBounds().width > pPaddle2->getPosition().x - (pPaddle2->getSize().x / 2) &&
+		getGlobalBounds().top + getGlobalBounds().height >= pPaddle2->getPosition().y - pPaddle2->getSize().y / 2 &&
+		getGlobalBounds().top <= pPaddle2->getPosition().y + pPaddle2->getSize().y / 2)
 	{
-			
+
 		soundPaddle.play();
 		movement.x = -speed;
-		 /*
-		 //Ball kollidiert oben, unten oder mittig mit paddle?
-		 if (getPosition().y < pPaddle2->getPosition().y)
-		 {
-		 	 movement.x = -speed;
-			 movement.y = speed;
-		 }
-		 else if (getPosition().y > pPaddle2->getPosition().y)
-		 {
-			 movement.x = -speed;
-			 movement.y = -speed;
-		 }
-		 else
-		 {
+		/*
+		//Ball kollidiert oben, unten oder mittig mit paddle?
+		if (getPosition().y < pPaddle2->getPosition().y)
+		{
 			movement.x = -speed;
-		 }*/
+			movement.y = speed;
+		}
+		else if (getPosition().y > pPaddle2->getPosition().y)
+		{
+			movement.x = -speed;
+			movement.y = -speed;
+		}
+		else
+		{
+		   movement.x = -speed;
+		}*/
 	}
 
 	move(movement.x * elapsed.asSeconds(), movement.y * elapsed.asSeconds());
+
+	//Ball mit fortschreitender Zeit beschleunigen
+	speed = speed + elapsed.asSeconds() * 10;
 }

@@ -35,6 +35,9 @@ Playstate::Playstate()
 	paddle2->setKeyUp(sf::Keyboard::Up);
 	paddle2->setKeyDown(sf::Keyboard::Down);
 
+	bufferPoint.loadFromFile("point.wav");
+	soundPoint.setBuffer(bufferPoint);
+
 }
 
 
@@ -43,7 +46,7 @@ Playstate::~Playstate()
 	std::cout << "Spiel entfernt" << std::endl;
 }
 
-void Playstate::eventHandler(Game & game)
+void Playstate::eventHandler(Game& game)
 {
 	sf::Event event;
 	while (game.window.pollEvent(event))
@@ -64,28 +67,34 @@ void Playstate::eventHandler(Game & game)
 	}
 }
 
-void Playstate::update(Game & game)
+void Playstate::update(Game& game)
 {
 	ball->update(game.window, game.timeDifference);
 	paddle1->update(game.window, game.timeDifference);
 	paddle2->update(game.window, game.timeDifference);
 
+
+
 	if (ball->getPosition().x <= 0)
 	{
 		pointsRight++;
 
+		soundPoint.play();
 		ball->initialize();
 		paddle1->initialize();
 		paddle2->initialize();
+
 
 	}
 	else if (ball->getPosition().x >= game.window.getSize().x)
 	{
 		pointsLeft++;
 
+		soundPoint.play();
 		ball->initialize();
 		paddle1->initialize();
 		paddle2->initialize();
+
 	}
 
 	pointsLeftText.setString(game.intToString(pointsLeft));

@@ -16,6 +16,7 @@ private:
 	bool endSelected;
 	sf::Font font;
 	sf::Text textStart;
+	sf::Text description;
 	sf::Text textEnd;
 	sf::Texture texture;
 	sf::Sprite sprite;

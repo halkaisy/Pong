@@ -10,7 +10,7 @@ class Ball : public sf::CircleShape
 public:
 	Ball(float radius, sf::Color color, sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2);
 	void initialize();
-	void update(sf::RenderWindow &window, sf::Time elapsed);
+	void update(sf::RenderWindow& window, sf::Time elapsed);
 
 
 private:
@@ -18,7 +18,7 @@ private:
 	float speed;
 	sf::Vector2f movement;
 	sf::Texture textur;
-	
+
 	sf::SoundBuffer bufferWall;
 	sf::Sound soundWall;
 	sf::SoundBuffer bufferPaddle;
