@@ -28,6 +28,11 @@ Ball::Ball(float radius, sf::Color color, sf::Vector2f position, std::shared_ptr
 
 }
 
+Ball::~Ball()
+{
+	std::cout << "Ball entfernt" << std::endl;
+}
+
 void Ball::initialize()
 {
 	speed = 300.f;
@@ -52,7 +57,7 @@ void Ball::initialize()
 		break;
 	}
 
-	setPosition(640.f, 360.f);
+	setPosition(640.f, 320.f);
 }
 
 void Ball::update(sf::RenderWindow & window, sf::Time elapsed)

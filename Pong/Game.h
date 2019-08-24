@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Gamestate.h"
 #include "Menu.h"
 #include "Playstate.h"

@@ -18,6 +18,11 @@ Paddle::Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position, std::s
 	speed = 1000.f;
 }
 
+Paddle::~Paddle()
+{
+	std::cout << "Paddle entfernt\n";
+}
+
 
 void Paddle::update(sf::RenderWindow& window, sf::Time elapsed)
 {

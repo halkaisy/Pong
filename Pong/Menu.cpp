@@ -17,6 +17,11 @@ Menu::Menu()
 	textEnd.setFillColor(sf::Color::Green);
 	textEnd.setPosition(500.f, 250.f);
 
+	//warnung uninitialized member variables
+	startSelected = false;
+	endSelected = false;
+
+
 	texture.loadFromFile("background.png");
 	texture.setSmooth(true);
 	sprite.setTexture(texture);
@@ -30,6 +35,14 @@ Menu::Menu()
 	description.setCharacterSize(12);
 	description.setFillColor(sf::Color::Yellow);
 	description.setPosition(500.f, 400.f);
+
+	bufferMouseClick.loadFromFile("mouseClick.wav");
+	soundMouseClick.setBuffer(bufferMouseClick);
+
+	bufferMenu.loadFromFile("menuTheme.wav");
+	soundMenu.setBuffer(bufferMenu);
+	soundMenu.setVolume(20);
+	soundMenu.play();
 }
 
 Menu::~Menu()
@@ -53,6 +66,7 @@ void Menu::eventHandler(Game& game)
 			{
 				if (startSelected)
 				{
+					soundMouseClick.play();
 					game.changeState(Game::states::PLAY);
 				}
 				else if (endSelected)

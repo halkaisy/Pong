@@ -4,9 +4,9 @@
 
 Playstate::Playstate()
 {
-	paddle1 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Blue, sf::Vector2f(32.f, 320.f), "redPaddle.jpg");
-	paddle2 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Red, sf::Vector2f(1248.f, 320.f), "bluePaddle.jpg");
-	ball = std::unique_ptr<Ball>(new Ball(20.f, sf::Color::Yellow, sf::Vector2f(640.f, 360.f), paddle1, paddle2));
+	paddle1 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Blue, sf::Vector2f(32.f, 320.f), "neonPaddle.jpg");
+	paddle2 = std::make_shared<Paddle>(sf::Vector2f(64.f, 192.f), sf::Color::Red, sf::Vector2f(1248.f, 320.f), "neonPaddle.jpg");
+	ball = std::unique_ptr<Ball>(new Ball(20.f, sf::Color::Yellow, sf::Vector2f(640.f, 320.f), paddle1, paddle2));
 
 
 	font.loadFromFile("font.ttf");
@@ -37,6 +37,7 @@ Playstate::Playstate()
 
 	bufferPoint.loadFromFile("point.wav");
 	soundPoint.setBuffer(bufferPoint);
+	soundPoint.setVolume(50);
 
 }
 
@@ -62,6 +63,14 @@ void Playstate::eventHandler(Game& game)
 			if (event.key.code == sf::Keyboard::Space)
 			{
 				ball->initialize();
+			}
+		}
+		
+		if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::Escape)
+			{
+				game.changeState(Game::states::MENU);
 			}
 		}
 	}

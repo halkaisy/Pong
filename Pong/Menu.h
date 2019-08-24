@@ -20,6 +20,10 @@ private:
 	sf::Text textEnd;
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::SoundBuffer bufferMouseClick;
+	sf::Sound soundMouseClick;
+	sf::SoundBuffer bufferMenu;
+	sf::Sound soundMenu;
 };
 
 #endif
