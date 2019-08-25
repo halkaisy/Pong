@@ -39,6 +39,10 @@ Playstate::Playstate()
 	soundPoint.setBuffer(bufferPoint);
 	soundPoint.setVolume(50);
 
+	BGM.openFromFile("menuTheme.wav");
+	BGM.setVolume(15);
+	BGM.setLoop(true);
+	BGM.play();
 }
 
 

@@ -32,6 +32,8 @@ private:
 	sf::SoundBuffer bufferPoint;
 	sf::Sound soundPoint;
 
+	sf::Music BGM;
+
 	int pointsLeft;
 	int pointsRight;
 };

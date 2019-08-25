@@ -16,6 +16,8 @@ Paddle::Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position, std::s
 	setTexture(&texture);
 
 	speed = 1000.f;
+	up = sf::Keyboard::Key::Up;
+	down = sf::Keyboard::Key::Down;
 }
 
 Paddle::~Paddle()
@@ -26,7 +28,7 @@ Paddle::~Paddle()
 
 void Paddle::update(sf::RenderWindow& window, sf::Time elapsed)
 {
-	//elapsedTime += elapsed;
+	elapsedTime += elapsed;
 
 	if (sf::Keyboard::isKeyPressed(up) && getPosition().y > getGlobalBounds().height / 2)
 	{

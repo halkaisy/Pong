@@ -31,7 +31,8 @@ Menu::Menu()
 	description.setString("CONTROLS\n\n"
 		"Player1	 W	 S \n"
 		"Player2	UP	DOWN \n"
-		"Press Space to start the ball");
+		"Space	Start Ball\n"
+		"Esc	Return to Menu");
 	description.setCharacterSize(12);
 	description.setFillColor(sf::Color::Yellow);
 	description.setPosition(500.f, 400.f);
@@ -39,9 +40,9 @@ Menu::Menu()
 	bufferMouseClick.loadFromFile("mouseClick.wav");
 	soundMouseClick.setBuffer(bufferMouseClick);
 
-	bufferMenu.loadFromFile("menuTheme.wav");
-	soundMenu.setBuffer(bufferMenu);
+	soundMenu.openFromFile("menuTheme.wav");
 	soundMenu.setVolume(20);
+	soundMenu.setLoop(true);
 	soundMenu.play();
 }
 

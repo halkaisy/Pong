@@ -22,8 +22,7 @@ private:
 	sf::Sprite sprite;
 	sf::SoundBuffer bufferMouseClick;
 	sf::Sound soundMouseClick;
-	sf::SoundBuffer bufferMenu;
-	sf::Sound soundMenu;
+	sf::Music soundMenu;
 };
 
 #endif
