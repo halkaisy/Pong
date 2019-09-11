@@ -84,8 +84,7 @@ void Playstate::update(Game& game)
 {
 	ball->update(game.window, game.timeDifference);
 	paddle1->update(game.window, game.timeDifference);
-	paddle2->update(game.window, game.timeDifference);
-
+	paddle2->updateAi(game.window, game.timeDifference, ball->getPosition().y);
 
 
 	if (ball->getPosition().x <= 0)

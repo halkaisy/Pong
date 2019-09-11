@@ -11,10 +11,11 @@ public:
 	~Paddle();
 	
 	void update(sf::RenderWindow& window, sf::Time elapsed);
+	void updateAi(sf::RenderWindow& window, sf::Time elapsed, float yBall);
 	void initialize();
 	void setKeyUp(sf::Keyboard::Key key);
 	void setKeyDown(sf::Keyboard::Key key);
-
+	inline void setSpeed(float speed) { this->speed = speed; }
 private:
 	sf::Keyboard::Key up;
 	sf::Keyboard::Key down;

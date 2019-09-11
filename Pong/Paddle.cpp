@@ -40,6 +40,25 @@ void Paddle::update(sf::RenderWindow& window, sf::Time elapsed)
 	};
 }
 
+void Paddle::updateAi(sf::RenderWindow& window, sf::Time elapsed, float yBall)
+{
+	setSpeed(350);
+	elapsedTime += elapsed;
+
+	if (yBall < (getPosition().y) && getPosition().y > getGlobalBounds().height / 2)
+	{
+		move(sf::Vector2f(0.f, -speed * elapsed.asSeconds()));
+	}
+	else if (yBall > (getPosition().y) && getPosition().y < window.getSize().y - getGlobalBounds().height / 2)
+	{
+		move(sf::Vector2f(0.f, speed * elapsed.asSeconds()));
+	}
+	else
+	{
+		move(sf::Vector2f(0.f, 0.f));
+	}
+}
+
 void Paddle::initialize()
 {
 	setPosition(startPosition);
