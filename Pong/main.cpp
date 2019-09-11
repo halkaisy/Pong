@@ -3,8 +3,12 @@
 int main()
 {
 	Game pong;
+
+	//Spiel wird gestartet, Menu wird aufgerufen
 	pong.changeState(Game::states::MENU);
-	while (pong.isRunning()) {
+
+	while (pong.isRunning()) 
+	{
 		pong.run();
 	}
 

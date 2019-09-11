@@ -16,17 +16,21 @@ class Game
 public:
 	//Konstruktor
 	Game();
+	~Game();
 
 	enum class states { MENU, PLAY, PLAYPVP };
 	void run();
-	void changeState(states newstate);
 
+	//Funktion zur Umwandlung von int zu String (Verwendung bei Anzeige der Punkte)
 	std::string intToString(int num);
 
 	//getter und setter
-	bool isRunning();
-	void setRunning(bool running);
-	
+	inline bool isRunning() { return running; }
+	inline void setRunning(bool running) { this->running = running; }
+	//setter fuer currentstate
+	void changeState(states newstate);
+
+	//Membervariablen
 	sf::RenderWindow window;
 	sf::Clock clock;
 	sf::Time timeStart = clock.getElapsedTime();

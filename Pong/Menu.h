@@ -12,9 +12,12 @@ public:
 	void update(Game& game);
 	void draw(Game& game);
 private:
+	//bool true wenn ein Textfeld durch die Maus ausgewaehlt ist, sonst false
 	bool startSelected;
 	bool pvpStartSelected;
 	bool endSelected;
+
+	//Membervariablen fuer Texte, Fonts, Sounds, Musik...
 	sf::Font font;
 	sf::Text textStart;
 	sf::Text pvpStart;

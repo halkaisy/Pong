@@ -10,14 +10,17 @@ class PVPState :
 	public Gamestate
 {
 public:
+	//Konstruktor
 	PVPState();
 	~PVPState();
 
+	//abstrakte Methoden implementieren
 	void eventHandler(Game& game);
 	void update(Game& game);
 	void draw(Game& game);
 
 private:
+	//Membervariablen
 	std::unique_ptr<Ball> ball;
 	std::shared_ptr<Paddle> paddle1;
 	std::shared_ptr<Paddle> paddle2;

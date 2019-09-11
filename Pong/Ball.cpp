@@ -1,25 +1,29 @@
 #include "Ball.h"
 
 
-Ball::Ball(float radius, sf::Color color, sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2)
+Ball::Ball(float radius, sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2)
 {
 	setRadius(radius);
-	//setFillColor(color);
+	//Origin auf Mittelpunkt setzen
 	setOrigin(getRadius() / 2, getRadius() / 2);
 	setPosition(position);
 
 	pPaddle1 = paddle1;
 	pPaddle2 = paddle2;
 
+	//direction und speed mit Startwerten initialisieren
 	direcition = 1;
 	speed = 0.f;
+
+	//Movement zu Beginn 0
 	movement = sf::Vector2f(0.f, 0.f);
 
+	//Textur fuer den Ball
 	textur.loadFromFile("ball.png");
 	textur.setSmooth(true);
 	setTexture(&textur);
 
-
+	//Sounds bei Kollision mit Waenden oder Paddles
 	bufferWall.loadFromFile("pongPaddle.wav");
 	soundWall.setBuffer(bufferWall);
 	bufferPaddle.loadFromFile("pongWall.wav");

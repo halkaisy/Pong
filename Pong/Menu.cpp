@@ -27,11 +27,12 @@ Menu::Menu()
 	pvpStartSelected = false;
 	endSelected = false;
 
-
+	//Hintergrund erstellen
 	texture.loadFromFile("background.png");
 	texture.setSmooth(true);
 	sprite.setTexture(texture);
 
+	//Benutzerinformationen / Beschreibung
 	font.loadFromFile("font.ttf");
 	description.setFont(font);
 	description.setString("CONTROLS\n\n"
@@ -42,10 +43,10 @@ Menu::Menu()
 	description.setCharacterSize(12);
 	description.setFillColor(sf::Color::Yellow);
 	description.setPosition(500.f, 400.f);
-
+	//Sound mouseclick
 	bufferMouseClick.loadFromFile("mouseClick.wav");
 	soundMouseClick.setBuffer(bufferMouseClick);
-
+	//BGM erstellen und abspielen
 	soundMenu.openFromFile("menuTheme.wav");
 	soundMenu.setVolume(20);
 	soundMenu.setLoop(true);
@@ -66,7 +67,7 @@ void Menu::eventHandler(Game& game)
 			game.window.close();
 			game.setRunning(false);
 		}
-
+		//Gamestate aendern, wenn ein Menupunkt ausgewaehlt wurde
 		if (event.type == sf::Event::MouseButtonReleased)
 		{
 			if (event.mouseButton.button == 0)
@@ -114,7 +115,7 @@ void Menu::update(Game& game)
 			startSelected = false;
 		}
 	}
-
+	//Analog
 	if (pvpStart.getGlobalBounds().contains(
 		sf::Mouse::getPosition(game.window).x,
 		sf::Mouse::getPosition(game.window).y))

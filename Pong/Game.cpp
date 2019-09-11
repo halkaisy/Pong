@@ -5,6 +5,11 @@ Game::Game():window(sf::VideoMode(1280, 720), "Pong")
 	running = true;
 }
 
+Game::~Game()
+{
+	std::cout << "Spiel entfernt" << std::endl;
+}
+
 void Game::run()
 {
 	// run the program as long as the window is open
@@ -49,13 +54,3 @@ std::string Game::intToString(int num)
 	return stringstream.str();
 }
 
-
-bool Game::isRunning()
-{
-	return running;
-}
-
-void Game::setRunning(bool running)
-{
-	this->running = running;
-}

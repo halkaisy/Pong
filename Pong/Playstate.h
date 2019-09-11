@@ -10,14 +10,17 @@ class Playstate :
 	public Gamestate
 {
 public:
+	//Konstruktor und Destruktor
 	Playstate();
 	~Playstate();
 
+	//Implementieren der abstrakten Funktionen
 	void eventHandler(Game& game);
 	void update(Game& game);
 	void draw(Game& game);
 
 private:
+	//Membervariablen fuer die Objekte
 	std::unique_ptr<Ball> ball;
 	std::shared_ptr<Paddle> paddle1;
 	std::shared_ptr<Paddle> paddle2;

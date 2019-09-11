@@ -7,7 +7,8 @@
 class Paddle : public sf::RectangleShape
 {
 public:
-	Paddle(sf::Vector2f size, sf::Color color, sf::Vector2f position, std::string texturePath);
+	//Konstruktor
+	Paddle(sf::Vector2f size, sf::Vector2f position, std::string texturePath);
 	~Paddle();
 	
 	void update(sf::RenderWindow& window, sf::Time elapsed);

@@ -8,7 +8,8 @@
 class Ball : public sf::CircleShape
 {
 public:
-	Ball(float radius, sf::Color color, sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2);
+	//Konstruktor
+	Ball(float radius, sf::Vector2f position, std::shared_ptr<Paddle> paddle1, std::shared_ptr<Paddle> paddle2);
 	~Ball();
 	void initialize();
 	void update(sf::RenderWindow& window, sf::Time elapsed);
