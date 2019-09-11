@@ -13,9 +13,11 @@ public:
 	void draw(Game& game);
 private:
 	bool startSelected;
+	bool pvpStartSelected;
 	bool endSelected;
 	sf::Font font;
 	sf::Text textStart;
+	sf::Text pvpStart;
 	sf::Text description;
 	sf::Text textEnd;
 	sf::Texture texture;

@@ -34,6 +34,9 @@ void Game::changeState(states newstate)
 	case states::PLAY:
 		currentState = std::move(std::unique_ptr<Playstate>(new Playstate));
 		break;
+	case states::PLAYPVP:
+		currentState = std::move(std::unique_ptr<PVPState>(new PVPState));
+		break;
 	default:
 		break;
 	}

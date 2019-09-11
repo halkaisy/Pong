@@ -7,6 +7,7 @@
 #include "Gamestate.h"
 #include "Menu.h"
 #include "Playstate.h"
+#include "PVPState.h"
 #include <memory>
 #include <sstream>
 
@@ -16,10 +17,9 @@ public:
 	//Konstruktor
 	Game();
 
-	enum class states { MENU, PLAY };
+	enum class states { MENU, PLAY, PLAYPVP };
 	void run();
 	void changeState(states newstate);
-
 
 	std::string intToString(int num);
 

@@ -10,15 +10,21 @@ Menu::Menu()
 	textStart.setFillColor(sf::Color::Green);
 	textStart.setPosition(500.f, 200.f);
 
-	font.loadFromFile("font.ttf");
+	pvpStart.setFont(font);
+	pvpStart.setString("PVP Start");
+	pvpStart.setCharacterSize(32);
+	pvpStart.setFillColor(sf::Color::Green);
+	pvpStart.setPosition(500.f, 250.f);
+
 	textEnd.setFont(font);
 	textEnd.setString("End");
 	textEnd.setCharacterSize(32);
 	textEnd.setFillColor(sf::Color::Green);
-	textEnd.setPosition(500.f, 250.f);
+	textEnd.setPosition(500.f, 300.f);
 
 	//warnung uninitialized member variables
 	startSelected = false;
+	pvpStartSelected = false;
 	endSelected = false;
 
 
@@ -70,6 +76,11 @@ void Menu::eventHandler(Game& game)
 					soundMouseClick.play();
 					game.changeState(Game::states::PLAY);
 				}
+				else if (pvpStartSelected)
+				{
+					soundMouseClick.play();
+					game.changeState(Game::states::PLAYPVP);
+				}
 				else if (endSelected)
 				{
 					game.window.close();
@@ -104,12 +115,34 @@ void Menu::update(Game& game)
 		}
 	}
 
+	if (pvpStart.getGlobalBounds().contains(
+		sf::Mouse::getPosition(game.window).x,
+		sf::Mouse::getPosition(game.window).y))
+	{
+		if (pvpStart.getFillColor() != sf::Color::Red)
+		{
+			pvpStart.setFillColor(sf::Color::Red);
+			pvpStartSelected = true;
+		}
+	}
+	else if (!pvpStart.getGlobalBounds().contains(
+		sf::Mouse::getPosition(game.window).x,
+		sf::Mouse::getPosition(game.window).y))
+	{
+		if (pvpStart.getFillColor() == sf::Color::Red)
+		{
+			pvpStart.setFillColor(sf::Color::Green);
+			pvpStartSelected = false;
+		}
+	}
+
 	//Analog
 	if (textEnd.getGlobalBounds().contains(
 		sf::Mouse::getPosition(game.window).x,
 		sf::Mouse::getPosition(game.window).y))
 	{
-		if (textEnd.getFillColor() != sf::Color::Red) {
+		if (textEnd.getFillColor() != sf::Color::Red) 
+		{
 			textEnd.setFillColor(sf::Color::Red);
 			endSelected = true;
 		}
@@ -118,7 +151,8 @@ void Menu::update(Game& game)
 		sf::Mouse::getPosition(game.window).x,
 		sf::Mouse::getPosition(game.window).y))
 	{
-		if (textEnd.getFillColor() == sf::Color::Red) {
+		if (textEnd.getFillColor() == sf::Color::Red) 
+		{
 			textEnd.setFillColor(sf::Color::Green);
 			endSelected = false;
 		}
@@ -130,6 +164,7 @@ void Menu::draw(Game& game)
 {
 	game.window.draw(sprite);
 	game.window.draw(textStart);
+	game.window.draw(pvpStart);
 	game.window.draw(description);
 	game.window.draw(textEnd);
 }
