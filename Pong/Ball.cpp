@@ -106,7 +106,7 @@ void Ball::update(sf::RenderWindow & window, sf::Time elapsed)
 		}*/
 	}
 	//Kollisiion Paddle2
-	else if (getGlobalBounds().left < pPaddle2->getPosition().x + (pPaddle2->getSize().x / 2) && //Kollisiion Paddle2
+	else if (getGlobalBounds().left < pPaddle2->getPosition().x + (pPaddle2->getSize().x / 2) &&
 		getGlobalBounds().left + getGlobalBounds().width > pPaddle2->getPosition().x - (pPaddle2->getSize().x / 2) &&
 		getGlobalBounds().top + getGlobalBounds().height >= pPaddle2->getPosition().y - pPaddle2->getSize().y / 2 &&
 		getGlobalBounds().top <= pPaddle2->getPosition().y + pPaddle2->getSize().y / 2)
@@ -119,12 +119,12 @@ void Ball::update(sf::RenderWindow & window, sf::Time elapsed)
 		if (getPosition().y < pPaddle2->getPosition().y)
 		{
 			movement.x = -speed;
-			movement.y = speed;
+			movement.y = -speed;
 		}
 		else if (getPosition().y > pPaddle2->getPosition().y)
 		{
 			movement.x = -speed;
-			movement.y = -speed;
+			movement.y = speed;
 		}
 		else
 		{
