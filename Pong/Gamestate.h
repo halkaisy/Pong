@@ -1,3 +1,9 @@
+/*
+289861, Josefin Claus
+295669, Haidar Alkaisy
+293861, Maik Habermann
+*/
+
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 

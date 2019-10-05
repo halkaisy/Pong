@@ -1,3 +1,9 @@
+/*
+289861, Josefin Claus
+295669, Haidar Alkaisy
+293861, Maik Habermann
+*/
+
 #include "Game.h"
 
 Game::Game():window(sf::VideoMode(1280, 720), "Pong")

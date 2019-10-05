@@ -1,6 +1,10 @@
+/*
+289861, Josefin Claus
+295669, Haidar Alkaisy
+293861, Maik Habermann
+*/
+
 #include "Paddle.h"
-
-
 
 Paddle::Paddle(sf::Vector2f size, sf::Vector2f position, std::string texturePath)
 {
